@@ -64,3 +64,15 @@ mapOfUsers.set(2, {name: 'avi', age: 19})
 const me = mapOfUsers.get(2)
 console.log(me) 
 mapOfUsers.delete(1)
+
+// exclude is just the opposite of picking 
+// it will exclude the given type from the given type
+type UserHehe = {
+    name: string,
+    age: number
+    }
+    type NewUser = Exclude<UserHehe, 'age'> // this will exclude the age from the User
+    // so the NewUser will be
+    // {
+    //     name: string
+    // }
