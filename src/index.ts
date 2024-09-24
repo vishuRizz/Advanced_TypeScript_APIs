@@ -28,3 +28,39 @@ interface anotherUser{
 // or if all the entris of anotherUser are readonly you can simply do this
 type newAnotherUser = Readonly<anotherUser>
  
+// if we have an object of objects 
+interface UserDetails{
+   name: string,
+   age:  number
+    }
+    interface Users{
+        [key: number]: UserDetails,
+    }
+
+ const userDetails: Users = {
+   1: {
+        name: "vishu",
+        age: 19
+    },
+    2: {
+        name: 'avi',
+        age: 18
+    }
+ }
+ // the same thing can be done using Record 
+type Users2 = Record<number, UserDetails> // this is equivalent to that [key: number]: UserDetails,
+// here number is the key and the UserDatails tells the type of values in object
+
+// Another way to do key value pair in ts/js is Map
+// Map is a collection of key value pairs
+type NewUser1 = {
+    name: string, 
+    age: number
+}
+const mapOfUsers = new Map<number, NewUser1>()
+// here number is the key and NewUser1 is the value
+mapOfUsers.set(1, {name: 'vishu', age: 18})
+mapOfUsers.set(2, {name: 'avi', age: 19})
+const me = mapOfUsers.get(2)
+console.log(me) 
+mapOfUsers.delete(1)
